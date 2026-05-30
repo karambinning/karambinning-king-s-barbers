@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>King&rsquo;s Barbers &mdash; 26 Tower Street, King&rsquo;s Lynn</title>
+<meta name="description" content="King's Barbers. A gentlemen's barbershop at 26 Tower Street, King's Lynn. Cuts, beards, hot-towel shaves. Call 01553 277860.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14110E;
+  --smoke:#2B2520;
+  --cream:#F1E8D5;
+  --paper:#E8DCC2;
+  --brass:#B08A3E;
+  --oxblood:#6A1B1B;
+  --rule:rgba(20,17,14,.22);
+  --rhythm:clamp(.95rem,.55rem + .9vw,1.1rem);
+  --display:"Playfair Display",Georgia,serif;
+  --body:"Source Serif 4","Source Serif Pro",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--body);
+  font-size:var(--rhythm);
+  line-height:1.55;
+  color:var(--ink);
+  background:var(--cream);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:.06;
+  mix-blend-mode:multiply;
+  background-image:radial-gradient(rgba(20,17,14,.6) .5px,transparent .5px),radial-gradient(rgba(20,17,14,.5) .35px,transparent .35px);
+  background-size:3px 3px,7px 7px;
+  background-position:0 0,1px 2px;
+}
+h1,h2,h3,h4{font-family:var(--display);font-weight:900;letter-spacing:-.015em;text-wrap:balance;margin:0}
+p{text-wrap:pretty;hyphens:auto;margin:0 0 1em}
+a{color:inherit;text-decoration:none}
+
+/* ───── top bar ───── */
+.bar{
+  position:relative;z-index:3;
+  display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;
+  padding:1.1rem clamp(1.1rem,4vw,3.2rem);
+  border-bottom:1px solid var(--rule);
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+}
+.bar strong{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.04em;text-transform:none}
+.bar nav{display:flex;gap:clamp(.8rem,2.5vw,1.8rem);flex-wrap:wrap;justify-content:flex-end}
+.bar nav a{position:relative;padding-bottom:.15em}
+.bar nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--ink);transition:right .35s ease}
+.bar nav a:hover::after{right:0}
+
+/* ───── hero ───── */
+.hero{
+  position:relative;z-index:2;
+  padding:clamp(2rem,6vw,5rem) clamp(1.1rem,4vw,3.2rem) clamp(2.5rem,7vw,5rem);
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(1.5rem,4vw,3rem);
+}
+.hero__eyebrow{
+  font-family:var(--body);
+  font-style:italic;font-weight:400;
+  font-size:1.05rem;letter-spacing:.04em;
+  color:var(--smoke);
+  display:flex;align-items:center;gap:.7rem;
+}
+.hero__eyebrow::before,.hero__eyebrow::after{
+  content:"";flex:0 0 2.4rem;height:1px;background:var(--ink);opacity:.4;
+}
+.hero__eyebrow::after{flex:1}
+.hero__mark{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(3.4rem,15vw,11rem);
+  line-height:.86;
+  letter-spacing:-.04em;
+  margin:0;
+}
+.hero__mark .amp{
+  font-style:italic;
+  font-weight:400;
+  color:var(--oxblood);
+  padding:0 .15ch;
+}
+.hero__sub{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1.6rem;
+  padding-top:1rem;
+  border-top:1px solid var(--rule);
+}
+@media (min-width:780px){
+  .hero__sub{grid-template-columns:1.2fr .8fr 1fr;align-items:start}
+}
+.hero__address{
+  font-family:var(--display);
+  font-style:italic;
+  font-size:clamp(1.05rem,1.4vw + .6rem,1.45rem);
+  line-height:1.35;
+  max-width:24ch;
+}
+.hero__phone{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(1.6rem,3.5vw,2.4rem);
+  letter-spacing:-.01em;
+  line-height:1;
+  display:inline-block;
+  padding:.1em 0 .15em;
+  border-bottom:2px solid var(--brass);
+  color:var(--ink);
+}
+.hero__phone .lbl{
+  display:block;
+  font-family:var(--body);
+  font-style:normal;font-weight:400;
+  font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--smoke);
+  margin-bottom:.4rem;
+  border:0;
+}
+.hero__copy{font-size:1.02rem;color:var(--smoke)}
+.hero__copy em{color:var(--ink);font-style:italic}
+
+/* ───── pole strip (barber pole as CSS) ───── */
+.pole{
+  position:relative;z-index:2;
+  height:18px;
+  background:
+    repeating-linear-gradient(
+      -55deg,
+      var(--cream) 0 14px,
+      var(--oxblood) 14px 28px,
+      var(--cream) 28px 42px,
+      var(--ink) 42px 56px
+    );
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+  background-size:200% 100%;
+  animation:slide 22s linear infinite;
+}
+@keyframes slide{from{background-position:0 0}to{background-position:200% 0}}
+
+/* ───── marquee ───── */
+.marquee{
+  position:relative;z-index:2;
+  overflow:hidden;
+  background:var(--ink);
+  color:var(--cream);
+  border-bottom:1px solid var(--ink);
+  --speed:38s;
+}
+.marquee__track{
+  display:inline-flex;gap:3.5rem;white-space:nowrap;padding:1.05rem 0;
+  font-family:var(--display);font-weight:400;font-style:italic;
+  font-size:clamp(1.05rem,1.6vw + .5rem,1.5rem);
+  animation:scroll var(--speed) linear infinite;
+  will-change:transform;
+}
+.marquee__track span{display:inline-flex;align-items:center;gap:3.5rem}
+.marquee__track span::after{
+  content:"\2731";
+  color:var(--brass);
+  font-style:normal;
+  font-size:.8em;
+}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ───── sections ───── */
+section{position:relative;z-index:2}
+.wrap{
+  padding:clamp(3rem,8vw,6.5rem) clamp(1.1rem,4vw,3.2rem);
+  max-width:78rem;margin:0 auto;
+}
+.section-label{
+  font-family:var(--body);
+  font-style:italic;font-weight:400;
+  font-size:.82rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--smoke);
+  margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.section-label::before{
+  content:"";width:2.4rem;height:1px;background:var(--ink);opacity:.5;
+}
+.section-h{
+  font-size:clamp(2.2rem,5vw + .8rem,4.8rem);
+  line-height:.98;
+  margin-bottom:1.5rem;
+}
+.section-h em{font-weight:400;color:var(--oxblood)}
+
+/* about */
+.about{background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.about__grid{display:grid;grid-template-columns:1fr;gap:clamp(1.6rem,4vw,3rem)}
+@media (min-width:820px){.about__grid{grid-template-columns:1.1fr 1fr}}
+.about__lede{
+  font-family:var(--display);
+  font-weight:400;
+  font-style:italic;
+  font-size:clamp(1.4rem,1.8vw + .7rem,2rem);
+  line-height:1.3;
+  color:var(--ink);
+}
+.about__lede::first-letter{
+  font-weight:900;
+  font-style:normal;
+  font-size:4.2em;
+  float:left;
+  line-height:.85;
+  padding:.05em .15em 0 0;
+  color:var(--oxblood);
+}
+.about__body p{font-size:1.05rem}
+.about__body p + p{margin-top:1em}
+
+/* services */
+.services__list{
+  list-style:none;padding:0;margin:0;
+  display:grid;grid-template-columns:1fr;gap:0;
+  border-top:1px solid var(--rule);
+}
+.services__list li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:1.4rem;
+  align-items:baseline;
+  padding:1.4rem 0;
+  border-bottom:1px solid var(--rule);
+}
+.services__num{
+  font-family:var(--display);
+  font-style:italic;font-weight:400;
+  color:var(--brass);
+  font-size:1.1rem;
+}
+.services__name{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(1.5rem,2.4vw + .4rem,2.2rem);
+  line-height:1.1;
+  letter-spacing:-.01em;
+}
+.services__desc{
+  grid-column:2/3;
+  font-size:1rem;
+  color:var(--smoke);
+  max-width:60ch;
+  margin-top:.45rem;
+}
+.services__foot{
+  margin-top:1.8rem;
+  font-family:var(--body);
+  font-style:italic;
+  color:var(--smoke);
+  font-size:.95rem;
+}
+
+/* gallery placeholder */
+.gallery{background:var(--ink);color:var(--cream);border-top:1px solid var(--ink)}
+.gallery .section-label{color:rgba(241,232,213,.65)}
+.gallery .section-label::before{background:var(--cream);opacity:.6}
+.gallery .section-h{color:var(--cream)}
+.gallery .section-h em{color:var(--brass)}
+.gallery__frames{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  margin-top:2rem;
+}
+.gallery__frame{
+  aspect-ratio:3/4;
+  border:1px solid rgba(241,232,213,.25);
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 18px,
+      rgba(241,232,213,.04) 18px 19px
+    );
+  display:grid;place-items:center;
+  font-family:var(--display);font-style:italic;font-size:.95rem;
+  color:rgba(241,232,213,.5);
+  text-align:center;padding:1rem;
+}
+.gallery__frame:nth-child(even){aspect-ratio:3/3.6}
+.gallery__note{
+  margin-top:1.8rem;
+  font-family:var(--body);font-style:italic;
+  color:rgba(241,232,213,.7);
+  max-width:54ch;font-size:1rem;
+}
+
+/* contact */
+.contact{background:var(--cream)}
+.contact__grid{display:grid;grid-template-columns:1fr;gap:clamp(1.8rem,4vw,3rem)}
+@media (min-width:880px){.contact__grid{grid-template-columns:1fr 1.1fr}}
+.card{
+  border:1px solid var(--ink);
+  padding:clamp(1.3rem,2.5vw,2rem);
+  background:var(--cream);
+}
+.card dt{
+  font-family:var(--body);
+  font-style:italic;
+  font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--smoke);
+  margin-bottom:.4rem;
+}
+.card dd{
+  margin:0 0 1.4rem;
+  font-family:var(--display);
+  font-size:1.35rem;line-height:1.3;font-weight:400;
+}
+.card dd:last-child{margin-bottom:0}
+.card dd a{border-bottom:1px solid var(--brass);padding-bottom:.05em}
+.card dd a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+.map{
+  border:1px solid var(--ink);
+  aspect-ratio:4/3;width:100%;
+  filter:sepia(.18) saturate(.9) contrast(1.02);
+}
+.hours-note{
+  font-family:var(--body);font-style:italic;font-size:.92rem;
+  color:var(--smoke);margin-top:.6rem;
+}
+
+/* footer */
+footer{
+  position:relative;z-index:2;
+  background:var(--ink);color:var(--cream);
+  padding:clamp(2.5rem,5vw,4rem) clamp(1.1rem,4vw,3.2rem);
+  border-top:1px solid var(--ink);
+}
+footer .wrap-f{
+  max-width:78rem;margin:0 auto;
+  display:grid;grid-template-columns:1fr;gap:1.5rem;
+}
+@media (min-width:780px){
+  footer .wrap-f{grid-template-columns:2fr 1fr 1fr;align-items:end}
+}
+footer h2{
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  line-height:.95;
+  color:var(--cream);
+  margin-bottom:.5rem;
+}
+footer h2 em{color:var(--brass);font-weight:400}
+footer p,footer address{font-style:normal;font-size:.95rem;color:rgba(241,232,213,.78);line-height:1.5;margin:0}
+footer a{border-bottom:1px solid rgba(241,232,213,.35)}
+footer a:hover{border-bottom-color:var(--brass)}
+.foot-rule{
+  margin-top:2.5rem;padding-top:1.2rem;
+  border-top:1px solid rgba(241,232,213,.18);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem;
+  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(241,232,213,.55);
+}
+
+/* scroll-reveal (progressive enhancement) */
+@supports (animation-timeline:view()){
+  .reveal{
+    animation:rise both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 28%;
+  }
+  @keyframes rise{
+    from{opacity:0;transform:translateY(1.4rem)}
+    to{opacity:1;transform:none}
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .marquee__track,.pole{animation:none}
+  .reveal{animation:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <strong>King&rsquo;s Barbers</strong>
+  <nav aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+441553277860">01553&nbsp;277860</a>
+  </nav>
+</header>
+
+<section class="hero" aria-label="Introduction">
+  <p class="hero__eyebrow">Est. on Tower Street &middot; King&rsquo;s Lynn</p>
+  <h1 class="hero__mark">King&rsquo;s<br>Barb<span class="amp">&amp;</span>rs</h1>
+  <div class="hero__sub">
+    <p class="hero__address">
+      26 Tower Street<br>
+      King&rsquo;s Lynn,<br>
+      Norfolk &nbsp;PE30&nbsp;1EJ
+    </p>
+    <a class="hero__phone" href="tel:+441553277860">
+      <span class="lbl">Telephone</span>
+      01553&nbsp;277860
+    </a>
+    <p class="hero__copy">
+      A walk-in gentlemen&rsquo;s barbers a short stroll from the
+      Saturday Market Place. <em>Cuts, beards, head shaves, and the
+      hot-towel shave done properly.</em>
+    </p>
+  </div>
+</section>
+
+<div class="pole" aria-hidden="true"></div>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Men&rsquo;s Haircut</span>
+    <span>Beard Trim</span>
+    <span>Hot Towel Shave</span>
+    <span>Head Shave</span>
+    <span>Walk-Ins Welcome</span>
+    <span>Tower Street &middot; PE30</span>
+    <span>Men&rsquo;s Haircut</span>
+    <span>Beard Trim</span>
+    <span>Hot Towel Shave</span>
+    <span>Head Shave</span>
+    <span>Walk-Ins Welcome</span>
+    <span>Tower Street &middot; PE30</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap reveal">
+    <p class="section-label">About</p>
+    <h2 class="section-h">A barber on <em>Tower Street.</em></h2>
+    <div class="about__grid">
+      <p class="about__lede">
+        King&rsquo;s Barbers is a small, independent shop on Tower
+        Street &mdash; the medieval thread that runs between the
+        Saturday Market and the Tuesday Market in the old part of
+        King&rsquo;s Lynn.
+      </p>
+      <div class="about__body">
+        <p>
+          We do one thing: cut men&rsquo;s hair, and tidy beards.
+          No appointment system, no website to wrestle with,
+          no app. You come in, you have a seat, you wait your turn,
+          and you leave looking sharp.
+        </p>
+        <p>
+          The shop has been part of the Tower Street row for years
+          alongside the other independents that make this corner of
+          PE30 worth walking to. If the chair&rsquo;s free, we&rsquo;ll
+          have you in it. If it isn&rsquo;t, the wait is rarely long.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap reveal">
+    <p class="section-label">Services</p>
+    <h2 class="section-h">What we do, <em>plainly.</em></h2>
+    <ol class="services__list">
+      <li>
+        <span class="services__num">i.</span>
+        <span class="services__name">Men&rsquo;s Haircut</span>
+        <p class="services__desc">
+          Clipper, scissor, or a combination &mdash; whatever the
+          haircut calls for. Sides tidied, neckline finished clean.
+        </p>
+      </li>
+      <li>
+        <span class="services__num">ii.</span>
+        <span class="services__name">Beard Trim</span>
+        <p class="services__desc">
+          Shape, line up, and trim. Lengths kept consistent, edges
+          taken in with a straight razor.
+        </p>
+      </li>
+      <li>
+        <span class="services__num">iii.</span>
+        <span class="services__name">Hot Towel Shave</span>
+        <p class="services__desc">
+          The full ritual &mdash; warm towels, pre-shave oil, lather,
+          straight razor, cold towel to finish. Forty-odd minutes
+          in the chair.
+        </p>
+      </li>
+      <li>
+        <span class="services__num">iv.</span>
+        <span class="services__name">Head Shave</span>
+        <p class="services__desc">
+          Clean, even, properly close. Finished with balm.
+        </p>
+      </li>
+    </ol>
+    <p class="services__foot">
+      For current prices, please call the shop on
+      <a href="tel:+441553277860" style="border-bottom:1px solid var(--brass)">01553&nbsp;277860</a>.
+    </p>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap reveal">
+    <p class="section-label">Gallery</p>
+    <h2 class="section-h">Photographs <em>coming soon.</em></h2>
+    <div class="gallery__frames" aria-hidden="true">
+      <div class="gallery__frame">Reserved &mdash; shop front</div>
+      <div class="gallery__frame">Reserved &mdash; chair</div>
+      <div class="gallery__frame">Reserved &mdash; cut</div>
+      <div class="gallery__frame">Reserved &mdash; shave</div>
+    </div>
+    <p class="gallery__note">
+      We&rsquo;re putting together a proper set of photographs of the
+      shop and the work. Until then, drop in and see it in person.
+    </p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <p class="section-label">Find us</p>
+    <h2 class="section-h">26 Tower Street, <em>PE30 1EJ.</em></h2>
+    <div class="contact__grid">
+      <dl class="card">
+        <dt>Address</dt>
+        <dd>
+          King&rsquo;s Barbers<br>
+          26 Tower Street<br>
+          King&rsquo;s Lynn<br>
+          Norfolk &nbsp;PE30&nbsp;1EJ
+        </dd>
+        <dt>Telephone</dt>
+        <dd><a href="tel:+441553277860">01553&nbsp;277860</a></dd>
+        <dt>Hours</dt>
+        <dd>
+          Walk-in barbers &mdash; no appointment.
+          <span class="hours-note">Please call ahead to confirm we&rsquo;re open before travelling.</span>
+        </dd>
+      </dl>
+      <iframe
+        class="map"
+        title="Map showing King's Barbers, 26 Tower Street, King's Lynn PE30 1EJ"
+        src="https://www.google.com/maps?q=26+Tower+Street,+King%27s+Lynn+PE30+1EJ&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap-f">
+    <div>
+      <h2>King&rsquo;s Barbers <em>&mdash;</em><br>Tower Street.</h2>
+      <p>A walk-in gentlemen&rsquo;s barbers in the old quarter of King&rsquo;s Lynn.</p>
+    </div>
+    <address>
+      26 Tower Street<br>
+      King&rsquo;s Lynn<br>
+      Norfolk &nbsp;PE30&nbsp;1EJ
+    </address>
+    <p>
+      <a href="tel:+441553277860">01553&nbsp;277860</a><br>
+      <span style="opacity:.6">Mon&ndash;Sat &middot; walk-ins</span>
+    </p>
+  </div>
+  <div class="wrap-f foot-rule">
+    <span>&copy; King&rsquo;s Barbers, King&rsquo;s Lynn</span>
+    <span>Tower Street &middot; PE30&nbsp;1EJ</span>
+  </div>
+</footer>
+
+</body>
+</html>
