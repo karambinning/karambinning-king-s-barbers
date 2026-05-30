@@ -88,12 +88,20 @@ a{color:inherit;text-decoration:none}
   line-height:.86;
   letter-spacing:-.04em;
   margin:0;
+  display:block;
 }
-.hero__mark .amp{
-  font-style:italic;
-  font-weight:400;
-  color:var(--oxblood);
-  padding:0 .15ch;
+.hero__mark span{display:block}
+.hero__mark .line-2{
+  position:relative;
+  display:inline-block;
+  padding-right:.35ch;
+}
+.hero__mark .line-2::after{
+  content:"";
+  display:block;
+  width:.55em;height:.12em;
+  margin-top:.18em;
+  background:var(--oxblood);
 }
 .hero__sub{
   display:grid;
@@ -403,7 +411,7 @@ footer a:hover{border-bottom-color:var(--brass)}
 
 <section class="hero" aria-label="Introduction">
   <p class="hero__eyebrow">Est. on Tower Street &middot; King&rsquo;s Lynn</p>
-  <h1 class="hero__mark">King&rsquo;s<br>Barb<span class="amp">&amp;</span>rs</h1>
+  <h1 class="hero__mark"><span>King's </span><span class="line-2">Barbers</span></h1>
   <div class="hero__sub">
     <p class="hero__address">
       26 Tower Street<br>
